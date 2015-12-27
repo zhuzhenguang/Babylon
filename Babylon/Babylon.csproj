@@ -37,11 +37,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Service\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Domain\User.cs" />
+    <Compile Include="Application\PassengerApplicationService.cs" />
+    <Compile Include="Application\TripApplicationService.cs" />
+    <Compile Include="Domain\IPassengerRepository.cs" />
+    <Compile Include="Domain\ITripRepository.cs" />
+    <Compile Include="Domain\Passenger.cs" />
+    <Compile Include="Domain\Trip.cs" />
+    <Compile Include="Infrastructure\CollectionPassengerRepository.cs" />
+    <Compile Include="Infrastructure\CollectionTripRepository.cs" />
+    <Compile Include="Resource\PassengerResource.cs" />
+    <Compile Include="Resource\Request\TripQueryRequest.cs" />
+    <Compile Include="Resource\TripResource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

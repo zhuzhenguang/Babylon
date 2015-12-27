@@ -12,7 +12,7 @@
     <AssemblyName>BabylonTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>ed9043b1</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>9b2ad3fc</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,6 +43,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
       <Private>True</Private>
@@ -61,7 +65,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DomainTest\" />
+    <ProjectReference Include="..\Babylon\Babylon.csproj">
+      <Project>{f470490e-1c59-4473-8fed-7e1133eb9396}</Project>
+      <Name>Babylon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationTest\PassengerApplicationServiceFacts.cs" />
+    <Compile Include="ApplicationTest\TripApplicationServiceFacts.cs" />
+    <Compile Include="DomainTest\PassengerFacts.cs" />
+    <Compile Include="DomainTest\TrainTest.cs" />
+    <Compile Include="ResourceTest\PassengerResourceFacts.cs" />
+    <Compile Include="ResourceTest\TestBase.cs" />
+    <Compile Include="ResourceTest\TrainResourceFacts.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
