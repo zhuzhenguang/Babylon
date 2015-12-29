@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="Application\PassengerApplicationService.cs" />
     <Compile Include="Application\TripApplicationService.cs" />
+    <Compile Include="Application\TripStatisticsApplicationService.cs" />
+    <Compile Include="Assert.cs" />
     <Compile Include="Domain\IPassengerRepository.cs" />
     <Compile Include="Domain\ITripRepository.cs" />
     <Compile Include="Domain\Passenger.cs" />

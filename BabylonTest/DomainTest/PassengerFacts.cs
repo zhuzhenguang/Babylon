@@ -17,7 +17,7 @@ namespace BabylonTest.DomainTest
 
             Assert.Equal(0, seatNo);
             Assert.True(aPassenger.HasTrip(aTrip));
-            Assert.Equal(0, aTrip.LeftTickets());
+            Assert.Equal(0, aTrip.FreeSeatsCount());
         }
 
         [Fact]

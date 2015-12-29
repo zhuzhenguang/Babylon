@@ -16,7 +16,7 @@ namespace Babylon.Domain
             }
         }
 
-        public int? AssigneeFor(string passengerId)
+        public int? AssignFor(string passengerId)
         {
             var seatNo = NextSeatNo();
             if (!seatNo.HasValue)
@@ -28,16 +28,29 @@ namespace Babylon.Domain
             return seatNo.Value;
         }
 
-
-
         private int? NextSeatNo()
         {
             return _pool.FirstOrDefault(el => el.Value != string.Empty).Key;
         }
 
-        public int FreeSeats()
+        public int FreeSeatsCount()
         {
             return _pool.Count(p => p.Value == string.Empty);
+        }
+
+        public IList<int> FreeSeats()
+        {
+            return _pool.Where(v => v.Value == string.Empty).Select(v => v.Key).ToList();
+        }
+
+        public int BookedSeatsCount()
+        {
+            return _pool.Count(p => p.Value != string.Empty);
+        }
+
+        public IDictionary<int, string> BookedSeats()
+        {
+            return _pool.Where(v => v.Value != string.Empty).ToDictionary(v => v.Key, v => v.Value);
         }
     }
 }

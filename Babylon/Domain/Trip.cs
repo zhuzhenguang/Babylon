@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Babylon.Domain
 {
@@ -21,18 +22,34 @@ namespace Babylon.Domain
 
         public int? AddPassenger(Passenger passenger)
         {
-            if (LeftTickets() == 0)
+            if (FreeSeatsCount() == 0)
             {
                 return null;
             }
 
             passenger.AddTrip(this);
-            return SeatPool.AssigneeFor(passenger.IdCardNo);
+            var seatNo = SeatPool.AssignFor(passenger.IdCardNo);
+            return seatNo;
         }
 
-        public int LeftTickets()
+        public int FreeSeatsCount()
+        {
+            return SeatPool.FreeSeatsCount();
+        }
+
+        public IList<int> FreeSeats()
         {
             return SeatPool.FreeSeats();
+        }
+
+        public int BookedSeatsCount()
+        {
+            return SeatPool.BookedSeatsCount();
+        }
+
+        public IDictionary<int, string> BookedSeats()
+        {
+            return SeatPool.BookedSeats();
         }
     }
 }

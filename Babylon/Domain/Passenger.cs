@@ -23,5 +23,10 @@ namespace Babylon.Domain
         }
 
         public string IdCardNo { get; private set; }
+
+        public int Book(Trip trip)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
