@@ -29,12 +29,26 @@ namespace Babylon.Infrastructure
 
         public Trip FindTrip(string tripId)
         {
-            return _trips.Single(trip => trip.Id == tripId);
+            return _trips.SingleOrDefault(trip => trip.Id == tripId);
         }
 
         public void Save(Trip trip)
         {
-            _trips.Add(trip);
+            if (!TripExist(trip))
+            {
+                _trips.Add(trip);
+            }
+            else
+            {
+                var ids = _trips.Select(t => t.Id).ToList();
+                var index = ids.IndexOf(trip.Id);
+                _trips[index] = trip;
+            }
+        }
+
+        private bool TripExist(Trip trip)
+        {
+            return FindTrip(trip.Id) != null;
         }
     }
 }

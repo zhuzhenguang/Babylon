@@ -13,8 +13,9 @@ namespace BabylonTest.DomainTest
             var aTrip = new Trip(aTrain, DateTime.UtcNow, DateTime.UtcNow);
             var aPassenger = new Passenger("id card no");
 
-            aTrip.AddPassenger(aPassenger);
+            var seatNo = aTrip.AddPassenger(aPassenger);
 
+            Assert.Equal(0, seatNo);
             Assert.True(aPassenger.HasTrip(aTrip));
             Assert.Equal(0, aTrip.LeftTickets());
         }
@@ -26,8 +27,9 @@ namespace BabylonTest.DomainTest
             var aTrip = new Trip(aTrain, DateTime.UtcNow, DateTime.UtcNow);
             var aPassenger = new Passenger("id card no");
 
-            aTrip.AddPassenger(aPassenger);
+            var seatNo = aTrip.AddPassenger(aPassenger);
 
+            Assert.Null(seatNo);
             Assert.False(aPassenger.HasTrip(aTrip));
         }
 

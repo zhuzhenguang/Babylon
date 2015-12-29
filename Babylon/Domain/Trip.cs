@@ -10,30 +10,29 @@ namespace Babylon.Domain
             Train = train;
             StartTime = startTime;
             EndTime = endTime;
-            Passengers = 0;
+            SeatPool = new SeatPool(train.Seats);
         }
 
         public string Id { get; private set; }
         public Train Train { get; private set; }
         public DateTime StartTime { get; private set; }
         public DateTime EndTime { get; private set; }
-        private int Passengers { get; set; }
+        private SeatPool SeatPool { get; set; } 
 
-        public bool AddPassenger(Passenger passenger)
+        public int? AddPassenger(Passenger passenger)
         {
-            if (LeftTickets() <= 0)
+            if (LeftTickets() == 0)
             {
-                return false;
+                return null;
             }
 
             passenger.AddTrip(this);
-            Passengers++;
-            return true;
+            return SeatPool.AssigneeFor(passenger.IdCardNo);
         }
 
         public int LeftTickets()
         {
-            return Train.Seats - Passengers;
+            return SeatPool.FreeSeats();
         }
     }
 }

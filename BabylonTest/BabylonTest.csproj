@@ -72,7 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainTest\PassengerFacts.cs" />
-    <Compile Include="DomainTest\TrainTest.cs" />
     <Compile Include="ResourceTest\PassengerResourceFacts.cs" />
     <Compile Include="ResourceTest\TestBase.cs" />
     <Compile Include="ResourceTest\TrainResourceFacts.cs" />

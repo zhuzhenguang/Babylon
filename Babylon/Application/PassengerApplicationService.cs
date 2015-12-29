@@ -13,15 +13,18 @@ namespace Babylon.Application
             _passengerRepository = passengerRepository;
         }
 
-        public void BookTicket(string tripId, string passengerIdCarNo)
+        public int? BookTicket(string tripId, string passengerIdCarNo)
         {
             var trip = _tripRepository.FindTrip(tripId);
             var passenger = _passengerRepository.FindPassenger(passengerIdCarNo);
-            
-            if (trip.AddPassenger(passenger))
+
+            var seatNo = trip.AddPassenger(passenger);
+            if (seatNo.HasValue)
             {
+                _tripRepository.Save(trip);
                 _passengerRepository.Save(passenger);    
             }
+            return seatNo;
         }
 
         public Passenger FindByCardId(string userCardIdNo)
