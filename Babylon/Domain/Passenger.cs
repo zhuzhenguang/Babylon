@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using Babylon.Domain.Common;
 
 namespace Babylon.Domain
 {
+    [AggregateRoot]
     public class Passenger
     {
         private readonly IList<string> _tripIds;
@@ -23,10 +25,5 @@ namespace Babylon.Domain
         }
 
         public string IdCardNo { get; private set; }
-
-        public int Book(Trip trip)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

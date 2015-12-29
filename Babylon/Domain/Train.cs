@@ -1,5 +1,8 @@
-﻿namespace Babylon.Domain
+﻿using Babylon.Domain.Common;
+
+namespace Babylon.Domain
 {
+    [ValueObject]
     public class Train
     {
         public Train(string trainNo, string @from, string to, int seats)

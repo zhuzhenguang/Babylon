@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Babylon.Domain.Common;
 
 namespace Babylon.Domain
 {
+    [AggregateRoot]
     public class Trip
     {
         public Trip(Train train, DateTime startTime, DateTime endTime)

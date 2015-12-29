@@ -7,7 +7,7 @@ namespace BabylonTest.DomainTest
     public class PassengerFacts
     {
         [Fact]
-        public void should_add_a_passenger_when_have_left_tickets()
+        public void should_add_a_passenger_when_have_free_tickets()
         {
             var aTrain = PrepareTrain(1);
             var aTrip = new Trip(aTrain, DateTime.UtcNow, DateTime.UtcNow);
@@ -21,7 +21,7 @@ namespace BabylonTest.DomainTest
         }
 
         [Fact]
-        public void should_not_add_the_passenger_when_have_no_left_tickets()
+        public void should_not_add_the_passenger_when_have_no_free_tickets()
         {
             var aTrain = PrepareTrain(0);
             var aTrip = new Trip(aTrain, DateTime.UtcNow, DateTime.UtcNow);

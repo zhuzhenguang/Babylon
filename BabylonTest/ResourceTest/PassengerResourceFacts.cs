@@ -20,7 +20,7 @@ namespace BabylonTest.ResourceTest
         }
 
         [Fact]
-        public void should_book_tickets_when_have_left_tickets()
+        public void should_book_tickets_when_have_free_tickets()
         {
             var expectedTrip = PrepareTripData(1, "Z162", "WuHan", "Beijing");
             var expectedPassenger = PreparePassengerData();
@@ -33,7 +33,7 @@ namespace BabylonTest.ResourceTest
         }
 
         [Fact]
-        public void should_not_book_tickets_when_have_no_left_tickets()
+        public void should_not_book_tickets_when_have_no_free_tickets()
         {
             var expectedTrip = PrepareTripData(0, "Z162", "WuHan", "Beijing");
             var expectedPassenger = PreparePassengerData();

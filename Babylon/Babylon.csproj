@@ -43,6 +43,8 @@
     <Compile Include="Application\TripApplicationService.cs" />
     <Compile Include="Application\TripStatisticsApplicationService.cs" />
     <Compile Include="Assert.cs" />
+    <Compile Include="Domain\Common\AggregateRootAttribute.cs" />
+    <Compile Include="Domain\Common\ValueObjectAttribute.cs" />
     <Compile Include="Domain\IPassengerRepository.cs" />
     <Compile Include="Domain\ITripRepository.cs" />
     <Compile Include="Domain\Passenger.cs" />
