@@ -17,7 +17,7 @@ namespace Babylon.Resource
             _passengerApplicationService.BookTicket(tripId, userCardIdNo);
         }
 
-        public Passenger OfCardId(string userCardIdNo)
+        public Passenger FindPassenger(string userCardIdNo)
         {
             return _passengerApplicationService.FindByCardId(userCardIdNo);
         }

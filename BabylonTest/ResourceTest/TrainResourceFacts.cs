@@ -17,15 +17,15 @@ namespace BabylonTest.ResourceTest
         [Fact]
         public void should_get_the_train_details_by_train_number()
         {
-            var expectedTrip = PrepareTripData(1);
+            var expectedTrip = PrepareTripData(1, "Z162", "WuHan", "Beijing");
             var tripResource = new TripResource(_tripApplicationService);
 
             var trip = tripResource.GetByTrainNo(new TripQueryRequest
             {
-                From = expectedTrip.From,
-                To = expectedTrip.To,
+                From = "WuHan",
+                To = "Beijing",
                 StartTime = expectedTrip.StartTime,
-                TrainNo = expectedTrip.TrainNo
+                TrainNo = "Z162"
             });
 
             Assert.Equal(expectedTrip, trip);

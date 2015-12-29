@@ -21,9 +21,9 @@ namespace Babylon.Infrastructure
 
         public Trip FindTrip(string trainNo, string @from, string to, DateTime startTime)
         {
-            return _trips.Single(trip => trip.TrainNo == trainNo &&
-                                         trip.From == @from &&
-                                         trip.To == to &&
+            return _trips.Single(trip => trip.Train.TrainNo == trainNo &&
+                                         trip.Train.From == @from &&
+                                         trip.Train.To == to &&
                                          trip.StartTime == startTime);
         }
 

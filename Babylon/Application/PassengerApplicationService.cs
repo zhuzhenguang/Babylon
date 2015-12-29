@@ -16,7 +16,7 @@ namespace Babylon.Application
         public void BookTicket(string tripId, string passengerIdCarNo)
         {
             var trip = _tripRepository.FindTrip(tripId);
-            var passenger = _passengerRepository.OfCardNo(passengerIdCarNo);
+            var passenger = _passengerRepository.FindPassenger(passengerIdCarNo);
             
             if (trip.AddPassenger(passenger))
             {
@@ -26,7 +26,7 @@ namespace Babylon.Application
 
         public Passenger FindByCardId(string userCardIdNo)
         {
-            return _passengerRepository.OfCardNo(userCardIdNo);
+            return _passengerRepository.FindPassenger(userCardIdNo);
         }
     }
 }

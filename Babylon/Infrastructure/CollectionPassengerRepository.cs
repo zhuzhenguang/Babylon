@@ -13,21 +13,26 @@ namespace Babylon.Infrastructure
             _passengers = new Collection<Passenger>();
         }
 
-        public void Save(Passenger newPassenger)
+        public void Save(Passenger aPassenger)
         {
-            if (OfCardNo(newPassenger.IdCardNo) == null)
+            if (!PassengerExist(aPassenger))
             {
-                _passengers.Add(newPassenger);
+                _passengers.Add(aPassenger);
             }
             else
             {
                 var ids = _passengers.Select(p => p.IdCardNo).ToList();
-                var index = ids.IndexOf(newPassenger.IdCardNo);
-                _passengers[index] = newPassenger;
+                var index = ids.IndexOf(aPassenger.IdCardNo);
+                _passengers[index] = aPassenger;
             }
         }
 
-        public Passenger OfCardNo(string idCardNo)
+        private bool PassengerExist(Passenger newPassenger)
+        {
+            return FindPassenger(newPassenger.IdCardNo) != null;
+        }
+
+        public Passenger FindPassenger(string idCardNo)
         {
             return _passengers.SingleOrDefault(passenger => passenger.IdCardNo == idCardNo);
         }

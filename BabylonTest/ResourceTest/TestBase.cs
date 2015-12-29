@@ -15,13 +15,19 @@ namespace BabylonTest.ResourceTest
             TripRepository = dbInitializer.TripRepository;
         }
 
-        protected Trip PrepareTripData(int leftTickets)
+        protected Trip PrepareTripData(int seats, string trainNo, string @from, string to)
         {
             var startTime = new DateTime(2015, 12, 26, 10, 30, 0);
             var endTime = new DateTime(2015, 12, 27, 6, 30, 0);
-            var trip = new Trip("Z162", "WuHan", "Beijing", startTime, endTime, leftTickets);
+            var train = PrepareTrainData(seats, trainNo, @from, to);
+            var trip = new Trip(train, startTime, endTime);
             TripRepository.Save(trip);
             return trip;
+        }
+
+        protected Train PrepareTrainData(int seats, string trainNo, string @from, string to)
+        {
+            return new Train(trainNo, @from, to, seats);
         }
     }
 

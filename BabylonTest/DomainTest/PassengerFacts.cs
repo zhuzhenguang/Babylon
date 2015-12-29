@@ -9,23 +9,31 @@ namespace BabylonTest.DomainTest
         [Fact]
         public void should_add_a_passenger_when_have_left_tickets()
         {
-            var aTrip = new Trip("Z162", "WuHan", "Beijing", DateTime.UtcNow, DateTime.UtcNow, 1);
+            var aTrain = PrepareTrain(1);
+            var aTrip = new Trip(aTrain, DateTime.UtcNow, DateTime.UtcNow);
             var aPassenger = new Passenger("id card no");
 
             aTrip.AddPassenger(aPassenger);
 
             Assert.True(aPassenger.HasTrip(aTrip));
+            Assert.Equal(0, aTrip.LeftTickets());
         }
 
         [Fact]
         public void should_not_add_the_passenger_when_have_no_left_tickets()
         {
-            var aTrip = new Trip("Z162", "WuHan", "Beijing", DateTime.UtcNow, DateTime.UtcNow, 0);
+            var aTrain = PrepareTrain(0);
+            var aTrip = new Trip(aTrain, DateTime.UtcNow, DateTime.UtcNow);
             var aPassenger = new Passenger("id card no");
 
             aTrip.AddPassenger(aPassenger);
 
             Assert.False(aPassenger.HasTrip(aTrip));
+        }
+
+        private static Train PrepareTrain(int seats)
+        {
+            return new Train("Z162", "WuHan", "Beijing", seats);
         }
     }
 }

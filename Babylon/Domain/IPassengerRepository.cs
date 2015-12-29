@@ -2,7 +2,7 @@
 {
     public interface IPassengerRepository
     {
-        void Save(Passenger newPassenger);
-        Passenger OfCardNo(string idCardNo);
+        void Save(Passenger aPassenger);
+        Passenger FindPassenger(string idCardNo);
     }
 }

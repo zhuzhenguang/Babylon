@@ -71,8 +71,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationTest\PassengerApplicationServiceFacts.cs" />
-    <Compile Include="ApplicationTest\TripApplicationServiceFacts.cs" />
     <Compile Include="DomainTest\PassengerFacts.cs" />
     <Compile Include="DomainTest\TrainTest.cs" />
     <Compile Include="ResourceTest\PassengerResourceFacts.cs" />
